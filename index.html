@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zoophony Test Site</title>
+
+    <!-- Tailwind CSS -->
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <!-- Model Viewer -->
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
+    <!-- P5.js -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
+
+    <style>
+      model-viewer#reveal {
+        --poster-color: transparent;
+      }
+      body {
+        font-family: "Pitch", "PitchSans";
+      }
+      h1 {
+        font-family: "PitchSans";
+      }
+      .blurred {
+        z-index: 30;
+        /* background: rgba(255, 255, 255, 0.1); */
+        backdrop-filter: blur(2px);
+        height: 100vh;
+        width: 100%;
+      }
+      .button {
+        display: inline-block;
+        position: relative;
+        border: 2px solid #fff;
+        overflow: hidden;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background: transparent;
+      }
+      .button span {
+        -webkit-transition: 0.6s;
+        -moz-transition: 0.6s;
+        -o-transition: 0.6s;
+        transition: 0.6s;
+        -webkit-transition-delay: 0.2s;
+        -moz-transition-delay: 0.2s;
+        -o-transition-delay: 0.2s;
+        transition-delay: 0.2s;
+      }
+      .button:before,
+      .button:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        -webkit-transition: 0.4s, opacity 0.6s;
+        -moz-transition: 0.4s, opacity 0.6s;
+        -o-transition: 0.4s, opacity 0.6s;
+        transition: 0.4s, opacity 0.6s;
+      }
+      .button:before {
+        content: attr(data-hover);
+        -webkit-transform: translate(-0, 0);
+        -moz-transform: translate(-0, 0);
+        -ms-transform: translate(-0, 0);
+        -o-transform: translate(-0, 0);
+        transform: translate(-0, 0);
+      }
+      .button:after {
+        content: attr(data-active);
+        -webkit-transform: translate(0, 0);
+        -moz-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        -o-transform: translate(0, 0);
+        transform: translate(0, 0);
+      }
+      .button:hover span,
+      .button:active span {
+        opacity: 0;
+        -webkit-transform: scale(0.3);
+        -moz-transform: scale(0.3);
+        -ms-transform: scale(0.3);
+        -o-transform: scale(0.3);
+        transform: scale(0.3);
+      }
+      .button:hover:before,
+      .button:active:after {
+        opacity: 1;
+        -webkit-transform: translate(0, 0);
+        -moz-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        -o-transform: translate(0, 0);
+        transform: translate(0, 0);
+        -webkit-transition-delay: 0.4s;
+        -moz-transition-delay: 0.4s;
+        -o-transition-delay: 0.4s;
+        transition-delay: 0.4s;
+      }
+      /* .button:active:before {
+        -webkit-transform: translate(-0, 0);
+        -moz-transform: translate(-0, 0);
+        -ms-transform: translate(-0, 0);
+        -o-transform: translate(-0, 0);
+        transform: translate(-0, 0);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s;
+      } */
+      @font-face {
+        font-family: Pitch;
+        src: url(font/TestPitch-Bold.otf);
+        font-weight: bold;
+      }
+      @font-face {
+        font-family: Pitch;
+        src: url(font/TestPitch-Regular.otf);
+        font-weight: normal;
+      }
+      @font-face {
+        font-family: PitchSans;
+        src: url(font/TestPitchSans-Bold.otf);
+        font-weight: bold;
+      }
+      @font-face {
+        font-family: PitchSans;
+        src: url(font/TestPitchSans-Regular.otf);
+        font-weight: normal;
+      }
+    </style>
+  </head>
+  <body class="h-screen w-screen text-black overflow-y-scroll">
+    <div class="blurred">
+      <model-viewer
+        id="reveal"
+        loading="auto"
+        style="width: 71%; height: 100%; margin: auto; z-index: 50"
+        src="scene.gltf"
+        alt="Composition"
+        camera-controls
+        disable-zoom
+        autoplay
+        ios-src="scene.gltf"
+      ></model-viewer>
+    </div>
+    <div class="w-full mx-auto">
+      <main
+        class="
+          mt-10
+          mx-auto
+          w-full
+          px-4
+          sm:mt-12 sm:px-6
+          md:mt-16
+          lg:mt-20 lg:px-8
+          xl:mt-28
+        "
+      >
+        <div class="text-left">
+          <p
+            class="
+              mt-3
+              text-lg text-gray-500
+              sm:mt-5 sm:text-md
+              w-full
+              sm:mx-auto
+              md:mt-5
+              lg:mx-0
+            "
+          >
+            Zoophony VR is a spatial audio and virtual reality work developed as
+            a collaboration between Berlin-based composer, Sergey Khismatov and
+            Bangalore-based visual-artist, Chaitanya Krishnan. This work is the
+            result of an obsessive, decade-long project by the Russian born
+            Khismatov to collect animal sounds and use them in a symphony.
+            Chaitanya worked with Sergey Khismatov to interpret the zoophony
+            score and transform it into a claustrophobic, ghostly and sometimes
+            magical atmosphere. Zoophony VR deals with environmental concerns
+            that inform the practices of both the artists. Chaitanya Krishnan
+            was assisted by the graduate trans-disciplinary research students at
+            the (ART)ScienceBLR. The work was also supported by the STORYLAB at
+            the Srishti Manipal Institute of Art, Design and Technology,
+            Bangalore.
+            <br /><br />
+            This collaboration took place as part of Soundchains - a Virtual
+            Artistic Exchange program hosted at TheISRO and supported by Goethe
+            Institut/Max Mueller Bhavan, Bangalore. This Virtual artistic
+            exchange is a response to the pandemic. With the shutting down of
+            the international physical residency at the Indian Sonic Research
+            Organisation, production and collaboration has now moved into new
+            uncharted digital formats.
+          </p>
+        </div>
+
+        <div class="sm:text-center lg:text-left pt-16 sm:py-22">
+          <h1
+            class="
+              text-3xl
+              tracking-tight
+              font-bold
+              text-gray-900
+              sm:text-5xl
+              md:text-3xl
+            "
+          >
+            <span class="block xl:inline" style="color: #00008b"
+              >ABOUT THE ARTISTS</span
+            >
+          </h1>
+          <div class="mt-3 w-full">
+            <div class="py-4 w-full grid grid-rows-1 md:grid-cols-2">
+              <div class="mb-2 mr-0 sm:mr-8 rounded-md">
+                <div class="w-full h-96 relative">
+                  <img
+                    class="w-full h-full rounded-md object-cover"
+                    src="Sergey.png"
+                  />
+                  <!-- <div class="read-more absolute right-4 bottom-4">
+                    <div
+                      class="flex items-end text-white"
+                      style="font-family: PitchSans; font-weight: bold"
+                    >
+                      READ MORE&nbsp;
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="white"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                        />
+                      </svg>
+                    </div>
+                  </div> -->
+                </div>
+                <div class="py-4">
+                  <h4
+                    class="text-md font-semibold tracking-tight text-gray-800"
+                  >
+                    Sergey Khismatov
+                  </h4>
+                  <p class="leading-normal text-gray-700">
+                    Sergey's a Berlin-based composer. He's fellow of Saxony
+                    Working Scholarship and Schoeppingen Kuenstlerdorf
+                    Scholarship 2018.
+                  </p>
+                </div>
+              </div>
+              <div class="mb-2 rounded-md">
+                <div class="w-full h-96 relative">
+                  <img
+                    class="w-full h-full rounded-md object-cover"
+                    src="Chaitanya.png"
+                  />
+                  <!-- <div class="read-more absolute right-4 bottom-4">
+                    <div
+                      class="flex items-end text-white"
+                      style="font-family: PitchSans; font-weight: bold"
+                    >
+                      READ MORE&nbsp;
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="white"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                        />
+                      </svg>
+                    </div>
+                  </div> -->
+                </div>
+                <div class="py-4">
+                  <h4
+                    class="text-md font-semibold tracking-tight text-gray-800"
+                  >
+                    Chaitanya Krishnan
+                  </h4>
+                  <p class="leading-normal text-gray-700">
+                    Chaitanya Krishnan is primarily a designer and digital
+                    illustrator, who has also worked as a web and web game
+                    designer in the past.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center py-16 sm:py-22">
+          <h1
+            class="
+              text-3xl
+              tracking-tight
+              font-bold
+              text-gray-900
+              sm:text-5xl
+              md:text-3xl
+            "
+          >
+            <span class="block xl:inline" style="color: #00008b"
+              >ZOOPHONY CAN BE EXPERIENCED IN 3 WAYS</span
+            >
+          </h1>
+          <p
+            class="
+              mt-1
+              text-lg text-gray-500
+              sm:text-md
+              w-full
+              sm:mx-auto
+              lg:mx-0
+            "
+            style="font-family: PitchSans; color: #00008b"
+          >
+            IN ALL CASES, HEADPHONES ARE HIGHLY RECOMMENDED
+          </p>
+          <div class="mt-3 w-full">
+            <div class="py-4 w-full grid grid-rows-1 md:grid-cols-3">
+              <div class="pb-6 mx-4 rounded-md">
+                <div class="py-4">
+                  <p
+                    class="text-gray-700 text-center"
+                    style="font-size: 0.75rem; line-height: 1rem"
+                  >
+                    On your computer move around with the WASD or Arrow Keys,
+                    and the Mouse to look around
+                  </p>
+                </div>
+                <div class="w-full h-auto relative">
+                  <img
+                    class="rounded-md object-cover"
+                    src="instructions1.png"
+                  />
+                </div>
+              </div>
+              <div class="mb-6 mx-4 rounded-md">
+                <div class="py-4">
+                  <p
+                    class="text-gray-700 text-center"
+                    style="font-size: 0.75rem; line-height: 1rem"
+                  >
+                    On your mobile device, tap the fullscreen button and then
+                    move the device to look around
+                  </p>
+                </div>
+                <div class="w-full h-auto relative">
+                  <img
+                    class="rounded-md object-cover"
+                    src="instructions2.png"
+                  />
+                </div>
+              </div>
+              <div class="mb-6 mx-4 rounded-md">
+                <div class="py-4">
+                  <p
+                    class="text-gray-700 text-center"
+                    style="font-size: 0.75rem; line-height: 1rem"
+                  >
+                    On your mobile device or PC, tap the VR button to enable VR
+                    mode and use a VR headset
+                  </p>
+                </div>
+                <div class="w-full h-auto relative">
+                  <img
+                    class="rounded-md object-cover"
+                    src="instructions3.png"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <form action="#">
+            <button
+              class="
+                button
+                rounded-full
+                text-white text-md
+                sm:text-2xl
+                my-2
+                sm:my-8
+                py-4
+                sm:py-8
+                px-12
+                sm:px-28
+              "
+              data-hover="🐘🐅🐋 ENTER ZOOPHONY 🐘🐅🐋"
+              style="background-color: #00008b"
+            >
+              <span>ENTER ZOOPHONY</span>
+            </button>
+          </form>
+        </div>
+      </main>
+
+      <footer class="footer-1 bg-black text-white py-8 sm:py-12">
+        <div class="container mx-auto px-4">
+          <div class="sm:flex sm:flex-wrap sm:-mx-4 mt-6 sm:mt-12 sm:pt-12">
+            <div class="px-4 sm:w-1/2 md:w-1/4 mt-4 md:mt-0">
+              <h6 class="font-bold mb-2 text-sm">ZOOPHONY audio</h6>
+              <p class="mb-4 text-sm">
+                Composed and produced by Sergey Khismatov.
+              </p>
+              <h6 class="font-bold mb-2 text-sm">ZOOPHONY VR experience</h6>
+              <p class="mb-4 text-sm">Designed by Chaitanya Krishnan.</p>
+            </div>
+            <div class="px-4 sm:w-1/2 md:w-1/4 mt-4 md:mt-0">
+              <h6 class="font-bold mb-2 text-sm">
+                3D & VR RESEARCH ASSISTANTS @ (ART)ScienceBLR
+              </h6>
+              <p class="mb-4 text-sm">
+                Arkoprabho Bhattacharjee, Chinmay Bhagat, Karthik Krishna,
+                Nilanjana Bose, Udita Palit
+              </p>
+            </div>
+            <div class="px-4 sm:w-1/2 md:w-1/4 mt-4 md:mt-0">
+              <h6 class="font-bold mb-2 text-sm">
+                IMMERSIVE MEDIA WEBSITE - R&D
+              </h6>
+              <p class="mb-4 text-sm">
+                TheISRO Immersive Media Unit / Dhruva Gowda Storz
+              </p>
+              <h6 class="font-bold mb-2 text-sm">WEBSITE DESIGN</h6>
+              <p class="mb-4 text-sm">TheISRO Design Unit</p>
+            </div>
+            <div class="px-4 sm:w-1/2 md:w-1/4 mt-4 md:mt-0">
+              <h6 class="font-bold mb-2 text-sm">
+                SOUNDCHAINS 2021 is brought to you by
+              </h6>
+              <p class="mb-4 text-sm">
+                The Indian Sonic Research Organisation | Goethe-Institut/Max
+                Mueller Bhavan Bangalore | (ART)ScienceBLR | StoryLab @ Srishti
+                Manipal Institute of Art, Design and Technology
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="
+              sm:flex sm:flex-wrap sm:-mx-4
+              mt-6
+              pt-6
+              sm:mt-12 sm:pt-12
+              border-t
+            "
+          >
+            <div class="sm:w-1/2 px-4 md:w-1/4 flex justify-center">
+              <img class="h-40 w-40" src="Logo_TheISRO.png" />
+            </div>
+            <div class="sm:w-1/2 px-4 md:w-1/4 flex justify-center">
+              <img class="h-40 w-40" src="Logo_GI_MMB.png" />
+            </div>
+            <div class="sm:w-1/2 px-4 md:w-1/4 flex justify-center">
+              <img class="h-40 w-40" src="Logo_ArtScienceBLR.png" />
+            </div>
+            <div class="sm:w-1/2 px-4 md:w-1/4 flex justify-center">
+              <img class="h-40 w-40" src="Logo_SL@SMI.png" />
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+  <!-- <script src="p5/particle.js"></script> -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="p5/sketch.js"></script>
+</html>
