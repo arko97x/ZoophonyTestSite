@@ -23,6 +23,9 @@
       model-viewer#reveal {
         --poster-color: transparent;
       }
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         font-family: "Pitch", "PitchSans";
       }
@@ -107,17 +110,6 @@
         -o-transition-delay: 0.4s;
         transition-delay: 0.4s;
       }
-      /* .button:active:before {
-        -webkit-transform: translate(-0, 0);
-        -moz-transform: translate(-0, 0);
-        -ms-transform: translate(-0, 0);
-        -o-transform: translate(-0, 0);
-        transform: translate(-0, 0);
-        -webkit-transition-delay: 0s;
-        -moz-transition-delay: 0s;
-        -o-transition-delay: 0s;
-        transition-delay: 0s;
-      } */
       @font-face {
         font-family: Pitch;
         src: url(font/TestPitch-Bold.otf);
@@ -141,6 +133,130 @@
     </style>
   </head>
   <body class="h-screen w-screen text-black overflow-y-scroll">
+    <nav
+      class="
+        flex
+        items-center
+        justify-between
+        flex-wrap
+        bg-black
+        opacity-80
+        p-2
+        fixed
+        w-full
+        z-10
+        top-0
+      "
+      style="font-family: PitchSans"
+    >
+      <div class="block lg:hidden">
+        <button
+          id="nav-toggle"
+          class="flex items-center px-3 py-2 text-gray-500 hover:text-white"
+        >
+          <svg
+            class="fill-current h-3 w-3"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </button>
+      </div>
+
+      <div
+        class="
+          w-full
+          flex-grow
+          lg:flex lg:items-center lg:w-auto
+          hidden
+          lg:block
+          pt-6
+          lg:pt-0
+        "
+        id="nav-content"
+      >
+        <ul class="list-reset lg:flex justify-end flex-1 items-center">
+          <li class="mr-3">
+            <a
+              class="inline-block py-2 px-4 text-white no-underline"
+              href="#ABOUT"
+              >ABOUT</a
+            >
+          </li>
+          <li class="mr-3">
+            <a
+              class="
+                inline-block
+                text-gray-600
+                no-underline
+                hover:text-gray-200
+                py-2
+                px-4
+              "
+              href="#ARTISTS"
+              >ARTISTS</a
+            >
+          </li>
+          <li class="mr-3">
+            <a
+              class="
+                inline-block
+                text-gray-600
+                no-underline
+                hover:text-gray-200
+                py-2
+                px-4
+              "
+              href="#EXPERIENCE"
+              >EXPERIENCE</a
+            >
+          </li>
+          <li class="mr-3">
+            <a
+              class="
+                inline-block
+                text-gray-600
+                no-underline
+                hover:text-gray-200
+                py-2
+                px-4
+              "
+              href="#CREDITS"
+              >CREDITS</a
+            >
+          </li>
+          <li class="mr-3">
+            <a
+              class="
+                inline-block
+                text-gray-600
+                no-underline
+                hover:text-gray-200
+                py-2
+                px-4
+              "
+              href="https://www.theisro.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >TheISRO</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!--Container-->
+    <div class="container shadow-lg mx-auto bg-white"></div>
+
+    <script>
+      //Javascript to toggle the menu
+      document.getElementById("nav-toggle").onclick = function () {
+        document.getElementById("nav-content").classList.toggle("hidden");
+      };
+    </script>
+
     <div class="blurred">
       <model-viewer
         id="reveal"
@@ -167,7 +283,7 @@
           xl:mt-28
         "
       >
-        <div class="text-left">
+        <div class="text-left" id="ABOUT">
           <p
             class="
               mt-3
@@ -203,7 +319,7 @@
           </p>
         </div>
 
-        <div class="sm:text-center lg:text-left pt-16 sm:py-22">
+        <div class="sm:text-center lg:text-left pt-16 sm:py-22" id="ARTISTS">
           <h1
             class="
               text-3xl
@@ -308,7 +424,7 @@
           </div>
         </div>
 
-        <div class="text-center py-16 sm:py-22">
+        <div class="text-center py-16 sm:py-22" id="EXPERIENCE">
           <h1
             class="
               text-3xl
@@ -391,7 +507,7 @@
               </div>
             </div>
           </div>
-          <form action="#">
+          <form action="https://zoophony.theisro.org/experience/">
             <button
               class="
                 button
@@ -414,7 +530,7 @@
         </div>
       </main>
 
-      <footer class="footer-1 bg-black text-white py-8 sm:py-12">
+      <footer class="footer-1 bg-black text-white py-8 sm:py-12" id="CREDITS">
         <div class="container mx-auto px-4">
           <div class="sm:flex sm:flex-wrap sm:-mx-4 mt-6 sm:mt-12 sm:pt-12">
             <div class="px-4 sm:w-1/2 md:w-1/4 mt-4 md:mt-0">
