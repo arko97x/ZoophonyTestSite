@@ -18,6 +18,10 @@
     ></script>
     <!-- P5.js -->
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.min.css"
+    />
 
     <style>
       model-viewer#reveal {
@@ -34,12 +38,11 @@
       }
       .blurred {
         z-index: 30;
-        /* background: rgba(255, 255, 255, 0.1); */
         backdrop-filter: blur(2px);
         height: 100vh;
         width: 100%;
       }
-      .button {
+      /* .button {
         display: inline-block;
         position: relative;
         border: 2px solid #fff;
@@ -109,6 +112,51 @@
         -moz-transition-delay: 0.4s;
         -o-transition-delay: 0.4s;
         transition-delay: 0.4s;
+      } */
+      .button-53 {
+        background-color: #00008b;
+        border: 0 solid #e5e7eb;
+        box-sizing: border-box;
+        color: #fff;
+        display: flex;
+        font-size: 1rem;
+        font-weight: 700;
+        justify-content: center;
+        line-height: 1.75rem;
+        padding: 0.75rem 1.65rem;
+        position: relative;
+        text-align: center;
+        text-decoration: none #fff solid;
+        width: 100%;
+        max-width: 460px;
+        position: relative;
+        cursor: pointer;
+        transform: rotate(-2deg);
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+      }
+      .button-53:focus {
+        outline: 0;
+      }
+      .button-53:after {
+        content: "";
+        position: absolute;
+        border: 1px solid #000000;
+        bottom: 4px;
+        left: 4px;
+        width: calc(100% - 1px);
+        height: calc(100% - 1px);
+      }
+      .button-53:hover:after {
+        bottom: 2px;
+        left: 2px;
+      }
+      @media (min-width: 768px) {
+        .button-53 {
+          padding: 0.75rem 3rem;
+          font-size: 1.25rem;
+        }
       }
       @font-face {
         font-family: Pitch;
@@ -247,18 +295,15 @@
               href="https://www.theisro.org/"
               target="_blank"
               rel="noopener noreferrer"
-              >TheISRO</a
+              >TheISRO<sup>↗</sup></a
             >
           </li>
         </ul>
       </div>
     </nav>
-
-    <!--Container-->
     <div class="container shadow-lg mx-auto bg-white"></div>
-
     <script>
-      //Javascript to toggle the menu
+      //js to toggle the menu
       document.getElementById("nav-toggle").onclick = function () {
         document.getElementById("nav-content").classList.toggle("hidden");
       };
@@ -349,28 +394,6 @@
                     class="w-full h-full rounded-md object-cover"
                     src="Sergey.png"
                   />
-                  <!-- <div class="read-more absolute right-4 bottom-4">
-                    <div
-                      class="flex items-end text-white"
-                      style="font-family: PitchSans; font-weight: bold"
-                    >
-                      READ MORE&nbsp;
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="white"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                        />
-                      </svg>
-                    </div>
-                  </div> -->
                 </div>
                 <div class="py-4">
                   <h4
@@ -383,6 +406,145 @@
                     Working Scholarship and Schoeppingen Kuenstlerdorf
                     Scholarship 2018.
                   </p>
+                  <button
+                    class="
+                      block
+                      text-white
+                      bg-blue-700
+                      hover:bg-blue-800
+                      font-medium
+                      rounded-lg
+                      text-sm
+                      px-5
+                      py-2.5
+                      mt-2
+                      text-center
+                    "
+                    type="button"
+                    data-modal-toggle="sergey-modal"
+                  >
+                    READ MORE
+                  </button>
+
+                  <div
+                    id="sergey-modal"
+                    aria-hidden="true"
+                    class="
+                      hidden
+                      overflow-y-auto overflow-x-hidden
+                      fixed
+                      right-0
+                      left-0
+                      top-4
+                      z-50
+                      justify-center
+                      items-center
+                      h-modal
+                      md:h-full md:inset-0
+                    "
+                  >
+                    <div class="relative px-4 w-full max-w-2xl h-2/3">
+                      <div class="relative bg-white rounded-md shadow">
+                        <div
+                          class="
+                            flex
+                            justify-between
+                            items-start
+                            p-5
+                            rounded-t
+                            border-b
+                          "
+                        >
+                          <h3
+                            class="
+                              text-xl
+                              font-semibold
+                              text-gray-900
+                              lg:text-2xl
+                            "
+                          >
+                            Sergey Khismatov
+                          </h3>
+                          <button
+                            type="button"
+                            class="
+                              text-gray-400
+                              bg-transparent
+                              hover:bg-gray-200 hover:text-gray-900
+                              rounded-lg
+                              text-sm
+                              p-1.5
+                              ml-auto
+                              inline-flex
+                              items-center
+                            "
+                            data-modal-toggle="sergey-modal"
+                          >
+                            <svg
+                              class="w-5 h-5"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"
+                              ></path>
+                            </svg>
+                          </button>
+                        </div>
+
+                        <div class="p-6 space-y-6">
+                          <p class="text-md leading-relaxed text-gray-500">
+                            Sergey Khismatov attended graduate school at the
+                            European University in St. Petersburg. During
+                            2010–2012, Sergey attended composition seminars with
+                            Moritz Eggert in Munich. Sergey participated in
+                            workshops and open lectures of composers such as
+                            Boris Filanovsky, Pascal Dusapin, Sandeep Bhagwati,
+                            Enno Poppe, Helmut Lachenmann.
+                            <br /><br />
+                            Sergey is fellow of Saxony Working Scholarship and
+                            Schoeppingen Kuenstlerdorf Scholarship 2018. In 2017
+                            he participated in dokumenta14. He is winner of
+                            OSSIA new music competition in NY. Sergey was
+                            selected for European Dukley Art Residence 2015 and
+                            for Villa Concordia artist-in-residence 2013-2014.
+                            His chamber opera cycle got Advocacy Award in Boston
+                            Metro Opera. He won the first prize in Hof Klang
+                            composition competition and was invited in Hof Klang
+                            artist-in-residence. In 2012 Sergey got St.
+                            Petersburg Culture Award. He is laureate of Franz
+                            Josef Reinl-Stiftung, Neue Toene and Musique
+                            Bruitiste. Luigi Russolo – Rossana Maggia
+                            competitions.
+                            <br /><br />
+                            Sergey’s projects are supported by Saxony Culture
+                            Foundation, GEMA Foundation, De La Motte Music
+                            Foundation, Dirk-Oelbermann Foundation as well as by
+                            different international festivals.
+                            <br /><br />
+                            Among performers of his pieces are Nadar,
+                            musikFabrik, Slagwerk Den Haag, Tromp percussion,
+                            Insomnio, eNsemble, Nostri Temporis, ADEvantgarde,
+                            NoName, Kuenstler Ensemble, Big Bang, Russian
+                            National Orchestra, ensemble XX century, Next
+                            Mushroom Promotion, Fedor Lednev, Alex Nowitz,
+                            Matthias Bauer, Boris Filanovsky, Moritz Eggert,
+                            Maciej Straburzynski, Johannes Schoellhorn, Feodor
+                            Amirov, Roman Yusipey, Sergey Tchirkov, Alexey
+                            Glazkov, Zoltan Almachi, Olga Vlasova, Mark
+                            Buloshnikov, Anna Korsun.
+                            <br /><br />
+                            In 2010 Sergey Khismatov and Lidia Ader organized
+                            the cycle of contemporary music concerts Tax Free:
+                            territory of young composers in St. Petersburg.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="mb-2 rounded-md">
@@ -391,28 +553,6 @@
                     class="w-full h-full rounded-md object-cover"
                     src="Chaitanya.png"
                   />
-                  <!-- <div class="read-more absolute right-4 bottom-4">
-                    <div
-                      class="flex items-end text-white"
-                      style="font-family: PitchSans; font-weight: bold"
-                    >
-                      READ MORE&nbsp;
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="white"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                        />
-                      </svg>
-                    </div>
-                  </div> -->
                 </div>
                 <div class="py-4">
                   <h4
@@ -425,6 +565,131 @@
                     illustrator, who has also worked as a web and web game
                     designer in the past.
                   </p>
+                  <button
+                    class="
+                      block
+                      text-white
+                      bg-blue-700
+                      hover:bg-blue-800
+                      font-medium
+                      rounded-lg
+                      text-sm
+                      px-5
+                      py-2.5
+                      mt-2
+                      text-center
+                    "
+                    type="button"
+                    data-modal-toggle="chaitanya-modal"
+                  >
+                    READ MORE
+                  </button>
+
+                  <div
+                    id="chaitanya-modal"
+                    aria-hidden="true"
+                    class="
+                      hidden
+                      overflow-y-auto overflow-x-hidden
+                      fixed
+                      right-0
+                      left-0
+                      top-4
+                      z-50
+                      justify-center
+                      items-center
+                      h-modal
+                      md:h-full md:inset-0
+                    "
+                  >
+                    <div class="relative px-4 w-full max-w-2xl h-2/3">
+                      <div class="relative bg-white rounded-md shadow">
+                        <div
+                          class="
+                            flex
+                            justify-between
+                            items-start
+                            p-5
+                            rounded-t
+                            border-b
+                          "
+                        >
+                          <h3
+                            class="
+                              text-xl
+                              font-semibold
+                              text-gray-900
+                              lg:text-2xl
+                            "
+                          >
+                            Chaitanya Krishnan
+                          </h3>
+                          <button
+                            type="button"
+                            class="
+                              text-gray-400
+                              bg-transparent
+                              hover:bg-gray-200 hover:text-gray-900
+                              rounded-lg
+                              text-sm
+                              p-1.5
+                              ml-auto
+                              inline-flex
+                              items-center
+                            "
+                            data-modal-toggle="chaitanya-modal"
+                          >
+                            <svg
+                              class="w-5 h-5"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"
+                              ></path>
+                            </svg>
+                          </button>
+                        </div>
+
+                        <div class="p-6 space-y-6">
+                          <p class="text-md leading-relaxed text-gray-500">
+                            He works mostly as a CG generalist on fun projects
+                            like games, animation and video. Apart from the
+                            usual video and animation work he also does CG
+                            illustrations as freelance work and R and D
+                            exercises. He has worked briefly in the 3D PC gaming
+                            industry in Bangalore, and it’s where he picked up
+                            most of his 3D skills. His graduation project was a
+                            sci-fi pop-up book for kids, and his first job was
+                            as an illustrator. Although he continues to
+                            occasionally work on print jobs, he mostly works in
+                            the domain of digital media. He has also been doing
+                            workshops with kids, where he shows them how to turn
+                            trash such as pet bottles and cans into toys.
+                            <br /><br />
+                            After spending 7 years at a design firm, Chaitanya
+                            worked as an independent consultant for a year. He
+                            then went on to co-found a Bangalore based film and
+                            animation studio called Falana Films, which he left
+                            after 7 years. He has previously also worked on
+                            various app and mobile game projects with One3One4.
+                            Chaitanya currently works as a professional on CG
+                            illustrations, game assets and animation. Having
+                            worked in the PC gaming industry and having gained a
+                            lot of experience working on flash based apps and
+                            games, he is now channelling his experience towards
+                            iOS and Android apps. He also has plenty of
+                            experience with rich media websites and interactive
+                            experiences using 3D and AR, and tries to mix them
+                            all whenever possible.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -514,8 +779,12 @@
               </div>
             </div>
           </div>
-          <form action="https://zoophony.theisro.org/experience/">
-            <button
+
+          <form
+            action="https://zoophony.theisro.org/experience/"
+            style="display: flex; align-items: center; justify-content: center"
+          >
+            <!-- <button
               class="
                 button
                 rounded-full
@@ -532,7 +801,8 @@
               style="background-color: #00008b"
             >
               <span>ENTER ZOOPHONY</span>
-            </button>
+            </button> -->
+            <button class="button-53" role="button">ENTER ZOOPHONY</button>
           </form>
         </div>
       </main>
@@ -604,8 +874,9 @@
         </div>
       </footer>
     </div>
+    <script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.bundle.js"></script>
   </body>
   <!-- <script src="p5/particle.js"></script> -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   <script src="p5/sketch.js"></script>
 </html>
