@@ -42,77 +42,12 @@
         height: 100vh;
         width: 100%;
       }
-      /* .button {
-        display: inline-block;
-        position: relative;
-        border: 2px solid #fff;
-        overflow: hidden;
-        text-decoration: none;
-        outline: none;
-        color: #fff;
-        background: transparent;
+      #sergey-read-more-btn:hover::before {
+        content: "👀";
       }
-      .button span {
-        -webkit-transition: 0.6s;
-        -moz-transition: 0.6s;
-        -o-transition: 0.6s;
-        transition: 0.6s;
-        -webkit-transition-delay: 0.2s;
-        -moz-transition-delay: 0.2s;
-        -o-transition-delay: 0.2s;
-        transition-delay: 0.2s;
+      #chaitanya-read-more-btn:hover::before {
+        content: "👀";
       }
-      .button:before,
-      .button:after {
-        content: "";
-        position: absolute;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        opacity: 0;
-        -webkit-transition: 0.4s, opacity 0.6s;
-        -moz-transition: 0.4s, opacity 0.6s;
-        -o-transition: 0.4s, opacity 0.6s;
-        transition: 0.4s, opacity 0.6s;
-      }
-      .button:before {
-        content: attr(data-hover);
-        -webkit-transform: translate(-0, 0);
-        -moz-transform: translate(-0, 0);
-        -ms-transform: translate(-0, 0);
-        -o-transform: translate(-0, 0);
-        transform: translate(-0, 0);
-      }
-      .button:after {
-        content: attr(data-active);
-        -webkit-transform: translate(0, 0);
-        -moz-transform: translate(0, 0);
-        -ms-transform: translate(0, 0);
-        -o-transform: translate(0, 0);
-        transform: translate(0, 0);
-      }
-      .button:hover span,
-      .button:active span {
-        opacity: 0;
-        -webkit-transform: scale(0.3);
-        -moz-transform: scale(0.3);
-        -ms-transform: scale(0.3);
-        -o-transform: scale(0.3);
-        transform: scale(0.3);
-      }
-      .button:hover:before,
-      .button:active:after {
-        opacity: 1;
-        -webkit-transform: translate(0, 0);
-        -moz-transform: translate(0, 0);
-        -ms-transform: translate(0, 0);
-        -o-transform: translate(0, 0);
-        transform: translate(0, 0);
-        -webkit-transition-delay: 0.4s;
-        -moz-transition-delay: 0.4s;
-        -o-transition-delay: 0.4s;
-        transition-delay: 0.4s;
-      } */
       .button-53 {
         background-color: #00008b;
         border: 0 solid #e5e7eb;
@@ -407,11 +342,9 @@
                     Scholarship 2018.
                   </p>
                   <button
+                    id="sergey-read-more-btn"
                     class="
                       block
-                      text-white
-                      bg-blue-700
-                      hover:bg-blue-800
                       font-medium
                       rounded-lg
                       text-sm
@@ -420,6 +353,13 @@
                       mt-2
                       text-center
                     "
+                    style="
+                      color: #00008b;
+                      background-color: #fff;
+                      border: 1px solid #00008b;
+                    "
+                    onmouseover="this.style.backgroundColor='#00008b'; this.style.color='#fff'"
+                    onmouseout="this.style.backgroundColor='#fff'; this.style.color='#00008b'"
                     type="button"
                     data-modal-toggle="sergey-modal"
                   >
@@ -566,11 +506,9 @@
                     designer in the past.
                   </p>
                   <button
+                    id="chaitanya-read-more-btn"
                     class="
                       block
-                      text-white
-                      bg-blue-700
-                      hover:bg-blue-800
                       font-medium
                       rounded-lg
                       text-sm
@@ -579,6 +517,13 @@
                       mt-2
                       text-center
                     "
+                    style="
+                      color: #00008b;
+                      background-color: #fff;
+                      border: 1px solid #00008b;
+                    "
+                    onmouseover="this.style.backgroundColor='#00008b'; this.style.color='#fff'"
+                    onmouseout="this.style.backgroundColor='#fff'; this.style.color='#00008b'"
                     type="button"
                     data-modal-toggle="chaitanya-modal"
                   >
@@ -784,24 +729,6 @@
             action="https://zoophony.theisro.org/experience/"
             style="display: flex; align-items: center; justify-content: center"
           >
-            <!-- <button
-              class="
-                button
-                rounded-full
-                text-white text-md
-                sm:text-2xl
-                my-2
-                sm:my-8
-                py-4
-                sm:py-8
-                px-12
-                sm:px-28
-              "
-              data-hover="🐘🐅🐋 ENTER ZOOPHONY 🐘🐅🐋"
-              style="background-color: #00008b"
-            >
-              <span>ENTER ZOOPHONY</span>
-            </button> -->
             <button class="button-53" role="button">ENTER ZOOPHONY</button>
           </form>
         </div>
